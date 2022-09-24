@@ -8,15 +8,15 @@
       <% for(let i = 0 ; i < questions.length ; i++){%>
         
           <!-- top -->
-          <div class="grid h-full w-96 py-4 card bg-base-300 rounded-box place-items-center justify-center">
-            <h3>Question <%=i + 1%> => <%=questions[i].question%>?</h3>
-              <ol>
+          <div class="grid h-full w-full py-4 card bg-base-300 rounded-box place-items-center justify-center">
+            <h3 class="px-4 font-bold">Question <%=i + 1%>: <%=questions[i].question%>?</h3>
+              <ol class="py-2">
                   <li>A. <%=questions[i].answer1%></li>
                   <li>B. <%=questions[i].answer2%></li>
                   <li>C. <%=questions[i].answer3%></li>
                   <li>D. <%=questions[i].answer4%></li>
               </ol>
-              <div class="btn-group">
+              <div class="btn-group py-2">
                   <input type="radio" name="question<%=i+1%>" value="answer1Responses" data-title="A" class="btn" form="submitAnswersForm" checked/>
                   <input type="radio" name="question<%=i+1%>" value="answer2Responses" data-title="B" class="btn" form="submitAnswersForm"/>
                   <input type="radio" name="question<%=i+1%>" value="answer3Responses" data-title="C" class="btn" form="submitAnswersForm"/>
