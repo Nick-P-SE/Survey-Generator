@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
 <div class="flex flex-col w-screen h-full  lg:flex-row">
   <!-- left section -->
-    <div class="grid flex-grow card p-4 bg-base-300 rounded-box place-items-center">
+    <div class="grid flex-grow card p-8 bg-base-300 rounded-box place-items-center">
     <!-- card for username and email -->
         <div class="card w-full  bg-base-100 shadow-xl">
             <div class="card-body">
@@ -20,7 +20,7 @@
     <div class="divider divider-horizontal"></div>
 
     <!-- right side with your quiz list and return to feed -->
-    <div class="grid flex-grow card p-4 bg-base-300 py-4 rounded-box place-items-center">
+    <div class="grid flex-grow card p-8 bg-base-300 rounded-box place-items-center">
     <!-- card for list of quizzes -->
         <div class="card w-full bg-base-100 shadow-xl">
             <div class="card-body">
@@ -48,11 +48,11 @@
                 <h2 class="card-title justify-center">Statistics for "<%=quiz.title %>"</h2>
                 <div class="overflow-x-auto">
                     <span class="indicator-item indicator-bottom indicator-end badge badge-primary">*Percentages rounded to the nearest whole number</span>
-                    <table class="table w-full">
+                    <table class="table w-full text-center">
                         <!-- head -->
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>Question #</th>
                                 <th>Question Text</th>
                                 <th>Total Responses</th>
                                 <th>Percentages for A</th>
