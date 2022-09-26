@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6">
+            <div>
+                <p><strong>User Name</strong>: <%= user.userName %></p>
+                <p><strong>Quiz Name</strong>: <%= quiz.name %></p>
+                <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+            </div>
+            <div class="mt-5">
+              <h2>Add Questions to your Quiz</h2>
+              <form action="/question/createQuestion" method="POST" id="createQuestionForm" name="createQuestionForm">
+                <div class="mb-3">
+                    <label for="question" class="form-label">Question Text</label>
+                    <input type="text" class="form-control" id="question" name="question" form="createQuestionForm">
+                    <label for="answer1" class="form-label">Answer A</label>
+                    <input type="text" class="form-control" id="answer1" name="answer1" form="createQuestionForm">
+                    <label for="answer2" class="form-label">Answer B</label>
+                    <input type="text" class="form-control" id="answer2" name="answer2" form="createQuestionForm">
+                    <label for="answer3" class="form-label">Answer C</label>
+                    <input type="text" class="form-control" id="answer3" name="answer3" form="createQuestionForm">
+                    <label for="answer4" class="form-label">Answer D</label>
+                    <input type="text" class="form-control" id="answer4" name="answer4" form="createQuestionForm">
+
+                </div>
+                
+                <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+              </form>
+            </div>
+        </div>
+        <div class="col-6">
+          
+          <div class="row justify-content-center mt-5">
+            <a class="btn btn-primary" href="/feed">Return to Feed</a>
+          </div>  
+        </div>  
+      </div>
+    </div>
+  </div>
+
+
+
+<%- include('partials/footer') -%>

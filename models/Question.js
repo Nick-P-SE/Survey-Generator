@@ -5,9 +5,45 @@ const QuestionSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+    answer1: {
+      type: String,
+      required: true,
+    },
+    answer1Responses: {
+      type: Number,
+      required: true,
+    },
+    answer2: {
+      type: String,
+      required: true,
+    },
+    answer2Responses: {
+      type: Number,
+      required: true,
+    },
+    answer3: {
+      type: String,
+      required: false,
+    },
+    answer3Responses: {
+      type: Number,
+      required: false,
+    },
+    answer4: {
+      type: String,
+      required: false,
+    },
+    answer4Responses: {
+      type: Number,
+      required: false,
+    },
     quiz: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Quiz",
+    },
+    quizId: {
+      type: String,
+      required: false,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -17,6 +53,11 @@ const QuestionSchema = new mongoose.Schema({
       type: Date,
       default: Date.now,
     },
+    responses: {
+      type: Number,
+      required: true,
+    },
+
 });
 
 module.exports = mongoose.model("Question", QuestionSchema);

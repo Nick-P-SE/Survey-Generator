@@ -1,4 +1,5 @@
 const Quiz = require("../models/Quiz");
+const Question = require('../models/Question')
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -20,7 +21,8 @@ module.exports = {
   getQuiz: async (req, res) => {
     try {
       const quiz = await Quiz.findById(req.params.id);
-      res.render("quiz.ejs", { quiz: quiz, user: req.user });
+      const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "desc"}).lean()
+      res.render("quiz.ejs", { quiz: quiz, user: req.user, questions: questions});
     } catch (err) {
       console.log(err);
     }

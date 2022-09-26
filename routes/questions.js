@@ -5,7 +5,7 @@ const questionsController = require("../controllers/questions");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Question Routes - simplified for now
-// router.get("/:id", ensureAuth, questionsController.getQuestion);
+//router.get("/:id", ensureAuth, questionsController.getQuestion);
 
 router.post("/createQuestion", upload.single("file"), questionsController.createQuestion);
 
