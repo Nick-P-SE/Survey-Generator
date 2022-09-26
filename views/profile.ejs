@@ -9,14 +9,14 @@
           </div>
           <div class="mt-5">
             <h2>Add a Quiz</h2>
-            <form action="/quiz/createQuiz" enctype="multipart/form-data" method="POST">
+            <form action="/quiz/createQuiz" method="POST" id="createQuizForm" name="createQuizForm">
               <div class="mb-3">
                   <label for="title" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="title" name="title">
+                  <input type="text" class="form-control" id="title" name="title" form="createQuizForm">
               </div>
               <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description"></textarea>
+                <textarea class="form-control" id="description" name="description" form="createQuizForm"></textarea>
               </div>
               
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
