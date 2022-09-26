@@ -1,21 +1,17 @@
 const mongoose = require("mongoose");
 
-const PostSchema = new mongoose.Schema({
-  title: {
+const AnswerSchema = new mongoose.Schema({
+  answer: {
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    require: true,
+  quiz: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Quiz",
   },
-  cloudinaryId: {
-    type: String,
-    require: true,
-  },
-  caption: {
-    type: String,
-    required: true,
+  question: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Question",
   },
   likes: {
     type: Number,
@@ -31,4 +27,4 @@ const PostSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Answer", AnswerSchema);
