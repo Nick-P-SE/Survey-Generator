@@ -27,6 +27,15 @@ module.exports = {
       console.log(err);
     }
   },
+  takeQuiz: async (req, res) => {
+    try {
+      const quiz = await Quiz.findById(req.params.id);
+      //const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "desc"}).lean()
+      res.render("takeQuiz.ejs", { quiz: quiz, user: req.user, questions: questions});
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createQuiz: async (req, res) => {
     try {
       console.log('what is in fields?', req.body.name, req.body.description)

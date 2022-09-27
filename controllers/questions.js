@@ -26,6 +26,20 @@ module.exports = {
       console.log(err);
     }
   },
+  answerQuestion: async (req, res) => {
+    try {
+      await Question.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { likes: 1 },
+        }
+      );
+      console.log("Likes +1");
+      res.redirect(`/quiz/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
   deleteQuestion: async (req, res) => {
     try {
       // Find question by id
