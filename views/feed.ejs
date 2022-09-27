@@ -1,16 +1,62 @@
 <%- include('partials/header') -%>
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <ul class="row list-unstyled">
-        <% for(var i=0; i<quizzes.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/quiz/<%= quizzes[i]._id%>">
-              <img class="img-fluid fa-regular fa-newspaper">
-              <span><%=quizzes[i].name%></span>
-            </a>
-          </li>
-        <% } %>
-        </ul>
+   
+  <div class="hero min-h-screen bg-base-200">
+    <div class="hero-content text-center">
+      <div class="max-w-screen">
+        <h1 class="text-5xl font-bold">Available Tests</h1>
+        <!-- start of table -->
+        <div class="overflow-x-auto">
+          <table class="table w-full">
+            <!-- head -->
+            <thead>
+              <tr>
+                <th></th>
+                <th>Quiz Name</th>
+                <th>Created by User</th>
+                <th>Likes/Times Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- row(s) -->
+              <% for(let i=0; i<quizzes.length; i++) {%>
+                <tr>
+                  <th><% i + 1 %></th>
+                  <td><a href="/quiz/<%= quizzes[i]._id%>"><i class="fa-solid fa-newspaper fa-2xl"></i> <%=quizzes[i].title%> </a></td>
+                  <td><%=quizzes[i].user.userName%></td>
+                  <td><%=quizzes[i].likes%></td>
+                  <!-- <td><%let count = 0 %> 
+                     
+                  <%for(let j = 0 ; j < questions.length ; j++){%>
+                    <% console.log(quizzes[i]._id, questions[j].quiz, count) %>
+                    <% if(questions[j].quiz === quizzes[i]._id) count+=1 %> 
+                    
+                    <% console.log(quizzes[i]._id == questions[j].quiz ? true:false) %>
+                  <% } %>
+                  <%=count%> 
+                  </td>
+
+                </tr>
+              <% } %> -->
+              <!-- row 2
+              <tr class="hover">
+                <th>2</th>
+                <td>Hart Hagerty</td>
+                <td>Desktop Support Technician</td>
+                <td>Purple</td>
+              </tr>
+               row 3 
+              <tr>
+                <th>3</th>
+                <td>Brice Swyre</td>
+                <td>Tax Accountant</td>
+                <td>Red</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
     </div>
-  </div>  
+  </div>
+  
 <%- include('partials/footer') -%>

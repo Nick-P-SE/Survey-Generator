@@ -6,14 +6,14 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 
 //Quiz Routes - simplified for now
-router.get("/:id", ensureAuth, quizzesController.getQuiz);
+//router.get("/:id", ensureAuth, quizzesController.getQuiz);
 
-router.post("/createQuiz", quizzesController.createQuiz);
+//router.post("/createQuiz", quizzesController.createQuiz);
 
-router.get("/takeQuiz/:id", quizzesController.takeQuiz)
+router.get("/:id", quizzesController.takeQuiz)
 
-router.put("/likeQuiz/:id", quizzesController.likeQuiz);
+//router.put("/likeQuiz/:id", quizzesController.likeQuiz);
 
-router.delete("/deleteQuiz/:id", quizzesController.deleteQuiz);
+//outer.delete("/deleteQuiz/:id", quizzesController.deleteQuiz);
 
 module.exports = router;

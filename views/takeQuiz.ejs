@@ -1,34 +1,37 @@
 <%- include('partials/header') -%>
-<div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-6">
-        <h2 class="justify-content-center"><%=quiz.title%></h2>
-        <div class="col-6">
+<div class="card w-screen bg-base-100 shadow-xl">
+  <div class="card-body justify-center">
+    <h1 class="card-title justify-center"><%=quiz.title%></h1>
+    <div class="flex flex-col w-screen justify-center">
+      <% for(let i = 0 ; i < questions.length ; i++){%>
         
-            <% for(let i = 0 ; i < questions.length ; i++){%>
-                <div class="col-6 justify-content-between mt-5">
-                    <h3>Question<%i%> => <%=questions[i].question%>?</h3>
-                    <ol>
-                        <li><%=questions[i].answer1%></li>
-                        <li><%=questions[i].answer2%></li>
-                        <li><%=questions[i].answer3%></li>
-                        <li><%=questions[i].answer4%></li>
-                    </ol>
-                    <div class="btn-group">
-                        <input type="radio" name="question<%=i%>" data-title="1" class="btn" checked/>
-                        <input type="radio" name="question<%=i%>" data-title="2" class="btn" />
-                        <input type="radio" name="question<%=i%>" data-title="3" class="btn" />
-                        <input type="radio" name="question<%=i%>" data-title="4" class="btn" />
-                    </div>
-                </div>
-            <% } %>
-             
-
-
-        </div>
-      </div>
+          <!-- top -->
+          <div class="grid h-full w-96 py-4 card bg-base-300 rounded-box place-items-center justify-center">
+            <h3>Question <%=i + 1%> => <%=questions[i].question%>?</h3>
+              <ol>
+                  <li>A. <%=questions[i].answer1%></li>
+                  <li>B. <%=questions[i].answer2%></li>
+                  <li>C. <%=questions[i].answer3%></li>
+                  <li>D. <%=questions[i].answer4%></li>
+              </ol>
+              <div class="btn-group">
+                  <input type="radio" name="question<%=i%>" data-title="A" class="btn" checked/>
+                  <input type="radio" name="question<%=i%>" data-title="B" class="btn" />
+                  <input type="radio" name="question<%=i%>" data-title="C" class="btn" />
+                  <input type="radio" name="question<%=i%>" data-title="D" class="btn" />
+              </div>
+          </div> 
+          <!-- divide -->
+          <div class="divider"></div> 
+          <% } %>
+    </div>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
     </div>
   </div>
+</div>
+        
+
 
 <%- include('partials/footer') -%>
 

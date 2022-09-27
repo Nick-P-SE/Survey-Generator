@@ -1,60 +1,70 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <h2 class="justify-content-center"><%= quiz.title %></h2>
-      <div class="col-6">
+<div class="flex flex-col w-screen border-opacity-50">
+  <!-- top -->
+  <div class="grid h-screen w-screen card bg-base-300 rounded-box place-items-center">
+    <!-- card -->
+    <div class="flex flex-col w-full">
+      <div class="grid h-full card bg-base-300 rounded-box place-items-center">
+        <!-- top -->
+        <div class="card w-96 bg-base-100 shadow-xl">
+          <div class="card-body">
+            <h2 class="card-title justify-center">Quiz Name: <%=quiz.title%></h2>
+            <!-- <h2 class="justify-center">Number of Questions: <%=questions.length%> </h2> -->
+            <div class="card-actions justify-center">
+              <form class="col-1" action="/quiz/likeQuiz/<%= quiz.id %>?_method=PUT" method="POST">
+                <button class="btn btn-primary fa fa-heart" type="submit"></button>
+              </form>
+              <h2 class="">Likes: <%=quiz.likes%></h2>
 
-      </div>
-      <div class="row justify-content-between">
-        <form
-          class="col-1"
-          action="/quiz/likeQuiz/<%= quiz.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
-        </form>
-        <h3 class="col-3">Likes: <%=quiz.likes%></h3>
-        <%if(quiz.user == user.id){ %>
-        <form
-          action="/quiz/deleteQuiz/<%=quiz.id%>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
-        </form>
-        <div class="mt-5">
-          <h2>Add Questions to your Quiz</h2>
-          <form action="/question/createQuestion" method="POST" id="createQuestionForm" name="createQuestionForm">
-            <div class="mb-3">
-                <label for="question" class="form-label">Question Text</label>
-                <input type="text" class="form-control" id="question" name="question" form="createQuestionForm">
-                <label for="answer1" class="form-label">Answer A</label>
-                <input type="text" class="form-control" id="answer1" name="answer1" form="createQuestionForm">
-                <label for="answer2" class="form-label">Answer B</label>
-                <input type="text" class="form-control" id="answer2" name="answer2" form="createQuestionForm">
-                <label for="answer3" class="form-label">Answer C</label>
-                <input type="text" class="form-control" id="answer3" name="answer3" form="createQuestionForm">
-                <label for="answer4" class="form-label">Answer D</label>
-                <input type="text" class="form-control" id="answer4" name="answer4" form="createQuestionForm">
-                <input type="hidden" class="form-control" id="hidden" name="hidden" value="<%=quiz.id%>" form="createQuestionForm">
-                
+              <%if(quiz.user == user.id){ %>
+                <form action="/quiz/deleteQuiz/<%=quiz.id%>?_method=DELETE" method="POST" class="col-3">
+                  <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                </form>
+                <div class="grid">
+                  <h2 class="card-title">Add Questions to your Quiz</h2>
 
-            </div>
+                    <form action="/question/createQuestion/<%=quiz.id%>" method="POST" id="createQuestionForm" name="createQuestionForm">
+                      <div class="mb-3">
+                          <label for="question" class="form-label">Question Text</label>
+                          <input type="text" class="form-control input input-bordered w-full max-w-xs" id="question" name="question" form="createQuestionForm">
+                          <label for="answer1" class="form-label label-text">Answer A</label>
+                          <input type="text" class="form-control input input-bordered w-full max-w-xs" id="answer1" name="answer1" form="createQuestionForm">
+                          <label for="answer2" class="form-label label-text">Answer B</label>
+                          <input type="text" class="form-control input input-bordered w-full max-w-xs" id="answer2" name="answer2" form="createQuestionForm">
+                          <label for="answer3" class="form-label label-text">Answer C</label>
+                          <input type="text" class="form-control input input-bordered w-full max-w-xs" id="answer3" name="answer3" form="createQuestionForm">
+                          <label for="answer4" class="form-label label-text">Answer D</label>
+                          <input type="text" class="form-control input input-bordered w-full max-w-xs" id="answer4" name="answer4" form="createQuestionForm">
+                          <input type="hidden" class="form-control" id="hidden" name="hidden" value="<%=quiz.id%>" form="createQuestionForm">
+                      </div>
+                      <div class="grid card-actions justify-center">
+                        <button type="submit" class="btn btn-primary justify-center" value="Upload">Add Question</button>
+                      </div>
+
+                    </form>
+                  
+                </div>
+                <%}%>
+            </div> 
+            <!-- divide -->
+      <div class="divider"></div> 
+      <!-- bottom -->
+      <div class="grid h-52 card bg-base-300 rounded-box place-items-center">
+        
             
-            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-          </form>
+        <div class="grid card-actions justify-center">
+              <a class="btn btn-primary" href="/takeQuiz/<%=quiz.id%>">Take this Quiz</a>
+              <a class="btn btn-primary" href="/profile">Return to Profile</a>
+              <a class="btn btn-primary" href="/feed">Return to Feed</a>
         </div>
-        <%}%>
       </div>
     </div>
-    <div class="col-3 mt-5">
-      <p><%= quiz.description %></p>
+    
+            
+        </div>
+      </div>
     </div>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
-    </div>
+
   </div>
 </div>
 

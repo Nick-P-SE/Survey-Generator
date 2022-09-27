@@ -12,8 +12,9 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const quizzes = await Quiz.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { quizzes: quizzes });
+      const quizzes = await Quiz.find().sort({ createdAt: "desc" }).populate('user').lean();
+      const questions = await Question.find().sort({createdAt: "desc"}).lean()
+      res.render("feed.ejs", { quizzes: quizzes, user: req.user, questions: questions });
     } catch (err) {
       console.log(err);
     }
@@ -22,6 +23,7 @@ module.exports = {
     try {
       const quiz = await Quiz.findById(req.params.id);
       const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "desc"}).lean()
+      console.log(quiz, questions)
       res.render("quiz.ejs", { quiz: quiz, user: req.user, questions: questions});
     } catch (err) {
       console.log(err);
@@ -30,15 +32,17 @@ module.exports = {
   takeQuiz: async (req, res) => {
     try {
       const quiz = await Quiz.findById(req.params.id);
-      //const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "desc"}).lean()
+      const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "desc"}).lean()
+      console.log(quiz, questions)
       res.render("takeQuiz.ejs", { quiz: quiz, user: req.user, questions: questions});
     } catch (err) {
       console.log(err);
     }
   },
+
   createQuiz: async (req, res) => {
     try {
-      console.log('what is in fields?', req.body.name, req.body.description)
+      console.log('what is in fields?', req.body.title, req.body.description)
       await Quiz.create({
         title: req.body.title,
         description: req.body.description,
@@ -51,6 +55,7 @@ module.exports = {
       console.log(err);
     }
   },
+  
   likeQuiz: async (req, res) => {
     try {
       await Quiz.findOneAndUpdate(
