@@ -24,19 +24,19 @@
                   <td><a href="/quiz/<%= quizzes[i]._id%>"><i class="fa-solid fa-newspaper fa-2xl"></i> <%=quizzes[i].title%> </a></td>
                   <td><%=quizzes[i].user.userName%></td>
                   <td><%=quizzes[i].likes%></td>
-                  <!-- <td><%let count = 0 %> 
+                  <td><%let count = 0 %> 
                      
                   <%for(let j = 0 ; j < questions.length ; j++){%>
-                    <% console.log(quizzes[i]._id, questions[j].quiz, count) %>
+                    
                     <% if(questions[j].quiz === quizzes[i]._id) count+=1 %> 
                     
                     <% console.log(quizzes[i]._id == questions[j].quiz ? true:false) %>
                   <% } %>
-                  <%=count%> 
+                  <!-- <%=count%>  -->
                   </td>
 
                 </tr>
-              <% } %> -->
+              <% } %> 
               <!-- row 2
               <tr class="hover">
                 <th>2</th>

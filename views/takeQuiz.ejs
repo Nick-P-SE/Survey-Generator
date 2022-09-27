@@ -1,6 +1,7 @@
 <%- include('partials/header') -%>
 <div class="card w-screen bg-base-100 shadow-xl">
   <div class="card-body justify-center">
+    <form>
     <h1 class="card-title justify-center"><%=quiz.title%></h1>
     <div class="flex flex-col w-screen justify-center">
       <% for(let i = 0 ; i < questions.length ; i++){%>
@@ -15,10 +16,10 @@
                   <li>D. <%=questions[i].answer4%></li>
               </ol>
               <div class="btn-group">
-                  <input type="radio" name="question<%=i%>" data-title="A" class="btn" checked/>
-                  <input type="radio" name="question<%=i%>" data-title="B" class="btn" />
-                  <input type="radio" name="question<%=i%>" data-title="C" class="btn" />
-                  <input type="radio" name="question<%=i%>" data-title="D" class="btn" />
+                  <input type="radio" name="question<%=i%>A" value="question<%=i%>A" data-title="A" class="btn" checked/>
+                  <input type="radio" name="question<%=i%>B" value="question<%=i%>B" data-title="B" class="btn" />
+                  <input type="radio" name="question<%=i%>C" value="question<%=i%>C" data-title="C" class="btn" />
+                  <input type="radio" name="question<%=i%>D" value="question<%=i%>D" data-title="D" class="btn" />
               </div>
           </div> 
           <!-- divide -->
@@ -26,8 +27,9 @@
           <% } %>
     </div>
     <div class="card-actions justify-end">
-      <button class="btn btn-primary">Buy Now</button>
+      <button class="btn btn-primary">Submit Answers</button>
     </div>
+  </form>
   </div>
 </div>
         
