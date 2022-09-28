@@ -1,5 +1,5 @@
 const Question = require('../models/Question')
-
+const Quiz = require("../models/Quiz");
 
 module.exports = {
   createQuestion: async (req, res) => {
@@ -26,15 +26,24 @@ module.exports = {
       console.log(err, "this failed");
     }
   },
-  answerQuestion: async (req, res) => {
+  submitAnswer: async (req, res) => {
     try {
-      await Question.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
+      const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "asc"}).lean()
+      console.log(questions, req.params.id)
+      for(let i = 0 ; i < questions.length ; i++){
+        const currentAnswer = req.body.question1
+        console.log(currentAnswer, questions[i].question)
+        
+        await Question.findOneAndUpdate({ _id: questions[i]._id} , {$inc: {[currentAnswer]: 1},})
+        console.log(`${questions[i].question} with id:${questions[i]._id} had answer ${currentAnswer} increased by 1`)
+
+        await Question.findOneAndUpdate({_id : questions[i]._id}, {$inc: {responses: 1}})
+        console.log(`responses for quiz with id ${req.params.id} increased by 1`)
+        
+      }
+      
+      
+      
       res.redirect(`/quiz/${req.params.id}`);
     } catch (err) {
       console.log(err);

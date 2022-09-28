@@ -8,7 +8,7 @@
         <!-- top -->
         <div class="card w-96 bg-base-100 shadow-xl">
           <div class="card-body">
-            <h2 class="card-title justify-center">Quiz Name: <%=quiz.title%></h2>
+            <h2 class="card-title justify-center">Survey Name: <%=quiz.title%></h2>
             <!-- <h2 class="justify-center">Number of Questions: <%=questions.length%> </h2> -->
             <div class="card-actions justify-center">
               <form class="col-1" action="/quiz/likeQuiz/<%= quiz.id %>?_method=PUT" method="POST">
@@ -21,7 +21,7 @@
                   <button class="btn btn-primary fa fa-trash" type="submit"></button>
                 </form>
                 <div class="grid">
-                  <h2 class="card-title">Add Questions to your Quiz</h2>
+                  <h2 class="card-title">Add Questions to your Survey</h2>
 
                     <form action="/question/createQuestion/<%=quiz.id%>" method="POST" id="createQuestionForm" name="createQuestionForm">
                       <div class="mb-3">
@@ -36,6 +36,7 @@
                           <label for="answer4" class="form-label label-text">Answer D</label>
                           <input type="text" class="form-control input input-bordered w-full max-w-xs" id="answer4" name="answer4" form="createQuestionForm">
                           <input type="hidden" class="form-control" id="hidden" name="hidden" value="<%=quiz.id%>" form="createQuestionForm">
+
                       </div>
                       <div class="grid card-actions justify-center">
                         <button type="submit" class="btn btn-primary justify-center" value="Upload">Add Question</button>
@@ -47,18 +48,18 @@
                 <%}%>
             </div> 
             <!-- divide -->
-      <div class="divider"></div> 
-      <!-- bottom -->
-      <div class="grid h-52 card bg-base-300 rounded-box place-items-center">
+            <div class="divider"></div> 
+            <!-- bottom -->
+            <div class="grid h-52 card bg-base-300 rounded-box place-items-center">
         
             
-        <div class="grid card-actions justify-center">
-              <a class="btn btn-primary" href="/quiz/takeQuiz/<%=quiz.id%>">Take this Quiz</a>
+            <div class="grid card-actions justify-center">
+              <a class="btn btn-primary" href="/quiz/takeQuiz/<%=quiz.id%>">Take this Survey</a>
               <a class="btn btn-primary" href="/profile">Return to Profile</a>
               <a class="btn btn-primary" href="/feed">Return to Feed</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
     
             
         </div>

@@ -1,9 +1,9 @@
 <%- include('partials/header') -%>
 <div class="card w-screen bg-base-100 shadow-xl">
-  <div class="card-body justify-center">
-    <form>
-    <h1 class="card-title justify-center"><%=quiz.title%></h1>
-    <div class="flex flex-col w-screen justify-center">
+  <div class="card-body place-items-center justify-center">
+    <form action="/question/submitAnswer/<%=quiz.id%>?_method=PUT" method="POST" id="submitAnswersForm" name="submitAnswersForm">
+    <h1 class="card-title justify-center py-4"><%=quiz.title%></h1>
+    <div class="flex flex-col w-screen place-items-center justify-center">
       <% for(let i = 0 ; i < questions.length ; i++){%>
         
           <!-- top -->
@@ -16,18 +16,18 @@
                   <li>D. <%=questions[i].answer4%></li>
               </ol>
               <div class="btn-group">
-                  <input type="radio" name="question<%=i%>A" value="question<%=i%>A" data-title="A" class="btn" checked/>
-                  <input type="radio" name="question<%=i%>B" value="question<%=i%>B" data-title="B" class="btn" />
-                  <input type="radio" name="question<%=i%>C" value="question<%=i%>C" data-title="C" class="btn" />
-                  <input type="radio" name="question<%=i%>D" value="question<%=i%>D" data-title="D" class="btn" />
+                  <input type="radio" name="question<%=i+1%>" value="answer1Responses" data-title="A" class="btn" form="submitAnswersForm" checked/>
+                  <input type="radio" name="question<%=i+1%>" value="answer2Responses" data-title="B" class="btn" form="submitAnswersForm"/>
+                  <input type="radio" name="question<%=i+1%>" value="answer3Responses" data-title="C" class="btn" form="submitAnswersForm"/>
+                  <input type="radio" name="question<%=i+1%>" value="answer4Responses" data-title="D" class="btn" form="submitAnswersForm"/>
               </div>
           </div> 
           <!-- divide -->
           <div class="divider"></div> 
           <% } %>
     </div>
-    <div class="card-actions justify-end">
-      <button class="btn btn-primary">Submit Answers</button>
+    <div class="card-actions justify-center">
+      <button type="submit" class="btn btn-primary" value="Upload">Submit Answers</button>
     </div>
   </form>
   </div>

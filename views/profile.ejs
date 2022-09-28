@@ -9,29 +9,29 @@
         <p><strong>Email</strong>: <%= user.email %></p>
         <div class="card-actions justify-center">
           <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          <a href="/myQuizzes" class="col-3 btn btn-primary">My Quizzes</a>
+          <a href="/myQuizzes" class="col-3 btn btn-primary">My Survey</a>
         </div>
       </div>
     </div>
     <!-- card for creating quiz-->  
     <div class="card w-96 bg-base-100 shadow-xl">
       <div class="card-body">
-        <h2 class="card-title">Create a new Quiz</h2>
+        <h2 class="card-title">Create a new Survey</h2>
         <form action="/quiz/createQuiz" method="POST" id="createQuizForm" name="createQuizForm">
           <div class="form-control w-full max-w-xs">
             <label for="title" class="label">
-              <span class="label-text">Quiz Name</span>
+              <span class="label-text">Survey Name</span>
             </label>
             <input type="text" id="title" name="title" placeholder="Quiz Name" class="form-control input input-bordered w-full max-w-xs" form="createQuizForm"/>
           </div>
           <div class="form-control w-full max-w-xs">
             <label for="description" class="label">
-              <span class="label-text">Quiz Description</span>
+              <span class="label-text">Survey Description</span>
             </label>
             <input type="text" id="description" name="description" placeholder="Quiz Description" class="form-control input input-bordered w-full max-w-xs" form="createQuizForm"/>
           </div>
           <div class="card-actions justify-center">
-            <button type="submit" class="btn btn-primary" value="Upload">Create Quiz</button>
+            <button type="submit" class="btn btn-primary" value="Upload">Create Survey</button>
           </div>
         </form>
       </div>
@@ -44,7 +44,7 @@
     <!-- card for list of quizzes -->
     <div class="card w-96 bg-base-100 shadow-xl">
       <div class="card-body">
-        <h2 class="card-title">My Quizzes</h2>
+        <h2 class="card-title">My Surveys</h2>
           <ul class="row list-unstyled">
             <% for(var i=0; i<quizzes.length; i++) {%>
               <li class="col-6 justify-content-between mt-5">
@@ -57,7 +57,7 @@
           </ul> 
         <!-- return to feed button -->
         <div class="card-actions justify-center">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+          <a class="btn btn-primary" href="/feed">Return to Survey Feed</a>
         </div>
       </div>
     </div>

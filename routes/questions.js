@@ -8,6 +8,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.post("/createQuestion/:id", questionsController.createQuestion);
 
+router.put("/submitAnswer/:id", questionsController.submitAnswer)
+
 router.delete("/deleteQuestion/:id", questionsController.deleteQuestion);
 
 module.exports = router;
