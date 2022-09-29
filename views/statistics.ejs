@@ -1,0 +1,88 @@
+<%- include('partials/header') -%>
+<div class="flex flex-col w-screen h-full  lg:flex-row">
+  <!-- left section -->
+    <div class="grid flex-grow card p-4 bg-base-300 rounded-box place-items-center">
+    <!-- card for username and email -->
+        <div class="card w-full  bg-base-100 shadow-xl">
+            <div class="card-body">
+                <p><strong>User Name</strong>: <%= user.userName %></p>
+                <p><strong>Email</strong>: <%= user.email %></p>
+                <div class="card-actions justify-center">
+                    <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+                    <!-- <a href="/myQuizzes" class="col-3 btn btn-primary">My Survey</a> -->
+                </div>
+            </div>
+        </div>
+    <!-- card for creating quiz-->  
+        
+    </div>
+    <!-- dividing line -->
+    <div class="divider divider-horizontal"></div>
+
+    <!-- right side with your quiz list and return to feed -->
+    <div class="grid flex-grow card p-4 bg-base-300 py-4 rounded-box place-items-center">
+    <!-- card for list of quizzes -->
+        <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">My Other Surveys</h2>
+                <ul class="row list-unstyled">
+                    <% for(var i=0; i<quizzes.length; i++) {%>
+                        <li class="col-6 justify-content-between mt-5">
+                            <a href="/quiz/<%= quizzes[i]._id%>">
+                                <i class="fa-solid fa-newspaper fa-2xl"></i>
+                                <span><%=quizzes[i].title%></span>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul> 
+                <!-- return to feed button -->
+                <div class="card-actions justify-center">
+                    <a class="btn btn-primary" href="/feed">Return to Survey Feed</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title justify-center">Statistics for "<%=quiz.title %>"</h2>
+                <div class="overflow-x-auto">
+                    <span class="indicator-item indicator-bottom indicator-end badge badge-primary">*Percentages rounded to the nearest whole number</span>
+                    <table class="table w-full">
+                        <!-- head -->
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Question Text</th>
+                                <th>Total Responses</th>
+                                <th>Percentages for A</th>
+                                <th>Percentages for B</th>
+                                <th>Percentages for C</th>
+                                <th>Percentages for D</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- row(s) -->
+                            <% for(let i=0; i<questions.length; i++) {%>
+                            <tr class="hover">
+                                <th>Question <%= i + 1%></th>
+                                <td><%= questions[i].question %></td>
+                                <td><%= questions[i].responses %></td>
+                                <td><%= Math.round((questions[i].answer1Responses / questions[i].responses) * 100)%>%</td>
+                                <td><%=Math.round((questions[i].answer2Responses / questions[i].responses) * 100)%>%</td>
+                                <td><%=Math.round((questions[i].answer3Responses / questions[i].responses) * 100)%>%</td>
+                                <td><%=Math.round((questions[i].answer4Responses / questions[i].responses) * 100) %>%</td>
+
+                                
+                                
+        
+                            </tr>
+                            <% } %> 
+                       
+                      </tbody>
+                    </table>
+                    <!-- <span class="justify-center">*Percentages rounded to the whole number</span> -->
+                  </div>
+            </div>
+        </div>
+<%- include('partials/footer') -%>

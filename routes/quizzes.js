@@ -8,6 +8,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 //Quiz Routes - simplified for now
 router.get("/:id", ensureAuth, quizzesController.getQuiz);
 
+router.get("/getStatistics/:id", ensureAuth, quizzesController.getStatistics)
+
 router.post("/createQuiz", quizzesController.createQuiz);
 
 router.get("/takeQuiz/:id", quizzesController.takeQuiz)

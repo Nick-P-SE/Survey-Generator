@@ -1,20 +1,21 @@
 <%- include('partials/header') -%>
-<div class="flex flex-col w-screen h-screen lg:flex-row">
+
+<div class="flex flex-col w-full h-full lg:flex-row">
   <!-- left section -->
-  <div class="grid flex-grow card bg-base-300 rounded-box place-items-center">
+  <div class="grid flex-grow p-10 m-10 card bg-base-300 rounded-box place-items-center">
     <!-- card for username and email -->
-    <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card w-96 my-8 bg-base-100 shadow-xl">
       <div class="card-body">
         <p><strong>User Name</strong>: <%= user.userName %></p>
         <p><strong>Email</strong>: <%= user.email %></p>
         <div class="card-actions justify-center">
           <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          <a href="/myQuizzes" class="col-3 btn btn-primary">My Survey</a>
+          
         </div>
       </div>
     </div>
     <!-- card for creating quiz-->  
-    <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card w-96 my-8 bg-base-100 shadow-xl">
       <div class="card-body">
         <h2 class="card-title">Create a new Survey</h2>
         <form action="/quiz/createQuiz" method="POST" id="createQuizForm" name="createQuizForm">
@@ -22,15 +23,15 @@
             <label for="title" class="label">
               <span class="label-text">Survey Name</span>
             </label>
-            <input type="text" id="title" name="title" placeholder="Quiz Name" class="form-control input input-bordered w-full max-w-xs" form="createQuizForm"/>
+            <input type="text" id="title" name="title" placeholder="Survey Name" class="form-control input input-bordered w-full max-w-xs" form="createQuizForm"/>
           </div>
           <div class="form-control w-full max-w-xs">
             <label for="description" class="label">
               <span class="label-text">Survey Description</span>
             </label>
-            <input type="text" id="description" name="description" placeholder="Quiz Description" class="form-control input input-bordered w-full max-w-xs" form="createQuizForm"/>
+            <input type="text" id="description" name="description" placeholder="Survey Description" class="form-control input input-bordered w-full max-w-xs" form="createQuizForm"/>
           </div>
-          <div class="card-actions justify-center">
+          <div class="card-actions mt-6 justify-center">
             <button type="submit" class="btn btn-primary" value="Upload">Create Survey</button>
           </div>
         </form>
@@ -40,7 +41,7 @@
   <!-- dividing line -->
   <div class="divider divider-horizontal"></div>
   <!-- right side with your quiz list and return to feed -->
-  <div class="grid flex-grow card bg-base-300 rounded-box place-items-center">
+  <div class="grid flex-grow card m-10 bg-base-300 rounded-box place-items-center">
     <!-- card for list of quizzes -->
     <div class="card w-96 bg-base-100 shadow-xl">
       <div class="card-body">
@@ -56,7 +57,7 @@
           <% } %>
           </ul> 
         <!-- return to feed button -->
-        <div class="card-actions justify-center">
+        <div class="card-actions mt-6 justify-center">
           <a class="btn btn-primary" href="/feed">Return to Survey Feed</a>
         </div>
       </div>

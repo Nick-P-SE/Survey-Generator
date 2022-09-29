@@ -3,7 +3,7 @@
   <div class="hero min-h-screen bg-base-200">
     <div class="hero-content text-center">
       <div class="max-w-screen">
-        <h1 class="text-5xl font-bold">Available Tests</h1>
+        <h1 class="text-5xl font-bold">Available Surveys</h1>
         <!-- start of table -->
         <div class="overflow-x-auto">
           <table class="table w-full">
@@ -19,7 +19,7 @@
             <tbody>
               <!-- row(s) -->
               <% for(let i=0; i<quizzes.length; i++) {%>
-                <tr>
+                <tr class="hover">
                   <th><% i + 1 %></th>
                   <td><a href="/quiz/<%= quizzes[i]._id%>"><i class="fa-solid fa-newspaper fa-2xl"></i> <%=quizzes[i].title%> </a></td>
                   <td><%=quizzes[i].user.userName%></td>
@@ -37,24 +37,11 @@
 
                 </tr>
               <% } %> 
-              <!-- row 2
-              <tr class="hover">
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Purple</td>
-              </tr>
-               row 3 
-              <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>Red</td>
-              </tr> -->
+             
             </tbody>
           </table>
         </div>
-        <button class="btn btn-primary">Get Started</button>
+        <button class="btn btn-primary my-6">Get Started</button>
       </div>
     </div>
   </div>

@@ -1,14 +1,14 @@
 <%- include('partials/header') -%>
 <div class="flex flex-col w-screen border-opacity-50">
   <!-- top -->
-  <div class="grid h-screen w-screen card bg-base-300 rounded-box place-items-center">
+  <div class="grid min-h-screen w-full card bg-base-300 rounded-box place-items-center">
     <!-- card -->
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col p-4 w-full">
       <div class="grid h-full card bg-base-300 rounded-box place-items-center">
         <!-- top -->
         <div class="card w-96 bg-base-100 shadow-xl">
           <div class="card-body">
-            <h2 class="card-title justify-center">Survey Name: <%=quiz.title%></h2>
+            <h2 class="card-title justify-center mb-6">Survey Name: <%=quiz.title%></h2>
             <!-- <h2 class="justify-center">Number of Questions: <%=questions.length%> </h2> -->
             <div class="card-actions justify-center">
               <form class="col-1" action="/quiz/likeQuiz/<%= quiz.id %>?_method=PUT" method="POST">
@@ -21,7 +21,7 @@
                   <button class="btn btn-primary fa fa-trash" type="submit"></button>
                 </form>
                 <div class="grid">
-                  <h2 class="card-title">Add Questions to your Survey</h2>
+                  <h2 class="card-title mt-6 mb-2">Add Questions to your Survey</h2>
 
                     <form action="/question/createQuestion/<%=quiz.id%>" method="POST" id="createQuestionForm" name="createQuestionForm">
                       <div class="mb-3">
@@ -39,7 +39,7 @@
 
                       </div>
                       <div class="grid card-actions justify-center">
-                        <button type="submit" class="btn btn-primary justify-center" value="Upload">Add Question</button>
+                        <button type="submit" class="btn btn-primary mt-4 justify-center" value="Upload">Add Question</button>
                       </div>
 
                     </form>
@@ -50,13 +50,14 @@
             <!-- divide -->
             <div class="divider"></div> 
             <!-- bottom -->
-            <div class="grid h-52 card bg-base-300 rounded-box place-items-center">
+            <div class="grid h-full card bg-base-300 rounded-box place-items-center">
         
             
-            <div class="grid card-actions justify-center">
-              <a class="btn btn-primary" href="/quiz/takeQuiz/<%=quiz.id%>">Take this Survey</a>
-              <a class="btn btn-primary" href="/profile">Return to Profile</a>
-              <a class="btn btn-primary" href="/feed">Return to Feed</a>
+            <div class="grid p-4 card-actions justify-center">
+              <a class="btn my-2 btn-primary" href="/quiz/takeQuiz/<%=quiz.id%>">Take this Survey</a>
+              <a class="btn my-2 btn-primary" href="/quiz/getStatistics/<%=quiz.id%>">See this Survey's Statistics</a>
+              <a class="btn my-2 btn-primary" href="/profile">Return to Profile</a>
+              <a class="btn my-2 btn-primary" href="/feed">Return to Feed</a>
             </div>
           </div>
         </div>

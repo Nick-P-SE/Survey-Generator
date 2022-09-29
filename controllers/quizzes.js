@@ -84,4 +84,15 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  getStatistics: async (req, res) => {
+    try {
+      const quiz = await Quiz.findById(req.params.id);
+      const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "asc"}).lean()
+      const quizzes = await Quiz.find({ user: req.user.id })
+      console.log(quiz, questions)
+      res.render("statistics.ejs", { quiz: quiz, user: req.user, questions: questions, quizzes: quizzes});
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
