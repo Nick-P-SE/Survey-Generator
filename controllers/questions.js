@@ -29,7 +29,10 @@ module.exports = {
   submitAnswer: async (req, res) => {
     try {
       const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "asc"}).lean()
-      console.log(questions, req.params.id)
+      const quiz = await Quiz.findById(req.params.id)
+      console.log(questions, req.params.id, quiz)
+      
+
       for(let i = 0 ; i < questions.length ; i++){
         const currentAnswer = req.body.question1
         console.log(currentAnswer, questions[i].question)
@@ -41,7 +44,11 @@ module.exports = {
         console.log(`responses for quiz with id ${req.params.id} increased by 1`)
         
       }
-      
+      // await quiz.completedByUsers.push(req.user.id)
+      const filter = {_id : req.params.id}
+      const update = {$addToSet: {completedByUsers: req.user.userName}}
+      await Quiz.findOneAndUpdate(filter , update)
+      console.log(quiz, req.user.id, filter, update)
       
       
       res.redirect(`/quiz/${req.params.id}`);
