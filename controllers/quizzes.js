@@ -12,9 +12,10 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const quizzes = await Quiz.find().sort({ createdAt: "desc" }).populate('user').lean();
+      const quizzes = await Quiz.find({privacy:false}).sort({likes: "desc"}).populate('user').lean();
       const questions = await Question.find().sort({createdAt: "desc"}).lean()
-      res.render("feed.ejs", { quizzes: quizzes, user: req.user, questions: questions });
+      
+      res.render("feed.ejs", { quizzes: quizzes, user: req.user, questions: questions,});
     } catch (err) {
       console.log(err);
     }
@@ -22,7 +23,7 @@ module.exports = {
   getQuiz: async (req, res) => {
     try {
       const quiz = await Quiz.findById(req.params.id);
-      const questions = await Question.find({quiz: req.params.id}).sort({createdAt: "desc"}).lean()
+      const questions = await Question.find({quiz: req.params.id}).sort({likes: "desc"}).lean()
       //console.log(quiz, questions)
       res.render("quiz.ejs", { quiz: quiz, user: req.user, questions: questions});
     } catch (err) {
@@ -42,12 +43,16 @@ module.exports = {
   
   createQuiz: async (req, res) => {
     try {
-      console.log('what is in fields?', req.body.title, req.body.description)
+      console.log('what is in fields?', req.body.title, req.body.description, req.body.privacy)
+      let private = false
+      if ( req.body.privacy === undefined ) private = true
       await Quiz.create({
         title: req.body.title,
         description: req.body.description,
         likes: 0,
         user: req.user.id,
+        privacy: private,
+        completedByUsers: [],
       });
       console.log("Quiz has been added!");
       res.redirect("/profile");
