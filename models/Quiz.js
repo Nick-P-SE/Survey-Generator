@@ -21,6 +21,14 @@ const QuizSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  privacy:{
+    type: Boolean,
+    required: true,
+  },
+  completedByUsers:{
+    type: Array,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Quiz", QuizSchema);
