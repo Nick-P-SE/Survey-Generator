@@ -13,27 +13,26 @@
                 <th></th>
                 <th>Survey Name</th>
                 <th>Created by User</th>
-                <th>Likes/Times Completed</th>
+                <th>Survey Likes</th>
+                <th># of Unique User Responses</th>
               </tr>
             </thead>
             <tbody>
               <!-- row(s) -->
               <% for(let i=0; i<quizzes.length; i++) {%>
-                <tr class="hover">
+                <tr class="hover text-center">
                   <th><% i + 1 %></th>
                   <td><a href="/quiz/<%= quizzes[i]._id%>"><i class="fa-solid fa-newspaper fa-2xl"></i> <%=quizzes[i].title%> </a></td>
                   <td><%=quizzes[i].user.userName%></td>
                   <td><%=quizzes[i].likes%></td>
-                  <td><%let count = 0 %> 
-                     
-                  <%for(let j = 0 ; j < questions.length ; j++){%>
-                    
-                    <% if(questions[j].quiz === quizzes[i]._id) count+=1 %> 
-                    
-                    <% console.log(quizzes[i]._id == questions[j].quiz ? true:false) %>
-                  <% } %>
-                  <!-- <%=count%>  -->
+                  <td><% if (quizzes[i].completedByUsers) {%> 
+                        <%=quizzes[i].completedByUsers.length%>
+                      <% } %> 
                   </td>
+                  
+                  
+                 
+                  
 
                 </tr>
               <% } %> 
@@ -41,7 +40,7 @@
             </tbody>
           </table>
         </div>
-        <button class="btn btn-primary my-6">Get Started</button>
+        <a class="btn my-6 btn-primary" href="/profile">My Surveys</a>
       </div>
     </div>
   </div>
