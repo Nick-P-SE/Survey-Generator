@@ -8,7 +8,7 @@
       <div class="card-body">
         <p><strong>User Name</strong>: <%= user.userName %></p>
         <p><strong>Email</strong>: <%= user.email %></p>
-        <div class="card-actions justify-center">
+        <div class="card-actions justify-center pt-4">
           <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           
         </div>
@@ -30,6 +30,12 @@
               <span class="label-text">Survey Description</span>
             </label>
             <input type="text" id="description" name="description" placeholder="Survey Description" class="form-control input input-bordered w-full max-w-xs" form="createQuizForm"/>
+          </div>
+          <div class="form-control pt-4">
+            <label class="label cursor-pointer">
+              <span class="label-text">Make survey public?</span> 
+              <input type="checkbox" class="toggle" name="privacy" checked />
+            </label>
           </div>
           <div class="card-actions mt-6 justify-center">
             <button type="submit" class="btn btn-primary" value="Upload">Create Survey</button>
