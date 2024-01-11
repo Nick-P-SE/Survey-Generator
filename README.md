@@ -17,7 +17,3 @@ The site uses Passport for user authentication, Mongoose as the connection to Mo
 
 There are a lot of planned features and future optimizations to be made here. First, the entire site could be remade in react rather than EJS so that some features such as the liking a survey feature could work without a page reload. Adding Google Authentication is the next step as it should not require too much work. Adding more types of questions (such as true/false, increasing/decreasing the available answers, etc.) is a must if the site ever becomes actually useful. I also understand that I am not a designer, so coming up with a layout that looked decent took a LONG time. 
 
-## Lessons Learned:
-
-I learned a lot through building this site. First, changing ideas slightly after half the site is already coded is a terrible idea and I am more likely to start over than try to modify everything to fit this new idea. Going from Quizzes to Surveys was a struggle and at some point, I gave up in the code, hence why everything is still called quizzes. I will also never be using EJS in another project now that I know React as it is just SO much easier to use and modify. Future projects will continue to use the MVC framework as it made it very easy to modify and add to this application. I also learned I am not good at creating my own design and layout, so future projects will probably use some kind of a template for the layout and CSS so whatever project actually looks good. 
-
