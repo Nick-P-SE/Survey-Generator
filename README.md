@@ -17,3 +17,6 @@ The site uses Passport for user authentication, Mongoose as the connection to Mo
 
 There are a lot of planned features and future optimizations to be made here. First, the entire site could be remade in react rather than EJS so that some features such as the liking a survey feature could work without a page reload. Adding Google Authentication is the next step as it should not require too much work. Adding more types of questions (such as true/false, increasing/decreasing the available answers, etc.) is a must if the site ever becomes actually useful. I also understand that I am not a designer, so coming up with a layout that looked decent took a LONG time. 
 
+## Please Note
+
+I am not a designer and built this completely from scratch. Next project will most likely involve using templates to make it look nice and save time. 
