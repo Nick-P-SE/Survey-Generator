@@ -1,7 +1,7 @@
 # Survey Generator
 This website allows you to create surveys (formally quizzes) that other people can participate in. It allows the user to see statistics on each answer and has private and public surveys. 
 
-**Link to project:** https://surveygenerator.up.railway.app/
+**Link to project:** https://surveygenerator.up.railway.app/ LINK DEAD due to Railway changing prices and no longer offering free tier. Need a new hosting site
 
 ![Home Page Img](https://user-images.githubusercontent.com/101064471/219450244-18f183d8-dbcb-485f-b616-fb0a6fb88e20.PNG)
 
